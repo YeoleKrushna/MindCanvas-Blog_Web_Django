@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block title %}post_confirm_del{% endblock title %}
+{% block content %}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h2 class="card-title">Delete Post</h2>
+            <p class="card-text">Are you sure you want to delete the post "{{ post.title }}"?</p>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes, delete</button>
+                <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

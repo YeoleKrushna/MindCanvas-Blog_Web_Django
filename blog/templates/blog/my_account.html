@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+<div class="card mt-4">
+    <div class="card-body">
+        <h2 class="card-title">👤 My Account</h2>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Date Joined:</strong> {{ user.date_joined }}</p>
+        <a href="{% url 'post_new' %}" class="btn btn-primary mt-3">Write a New Blog</a>
+    </div>
+</div>
+{% endblock %}

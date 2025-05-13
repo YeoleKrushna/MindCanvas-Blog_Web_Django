@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+    <div class="card mt-4 me-5 col-sm-8 offset-2">
+        <div class="card-body ">
+            <h2 class="card-title">Sign Up</h2>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-3">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {{ field.errors}}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

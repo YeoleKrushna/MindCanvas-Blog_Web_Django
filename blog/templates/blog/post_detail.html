@@ -1,0 +1,74 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ post.title }}{% endblock title %}
+{% block content %}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h2 class="card-title">{{ post.title }}</h2>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid">
+            {% endif %}
+            <p class="card-text">{{ post.body }}</p>
+            <p class="card-text"><small class="text-muted">By {{ post.author }} on {{ post.created_at }}</small></p>
+
+            <!-- Like Button -->
+            <form method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" name="like_submit" class="btn btn-outline-primary">
+                    {% if user in post.likes.all %}
+                        ❤️ Unlike
+                    {% else %}
+                        🤍 Like
+                    {% endif %}
+                    ({{ post.total_likes }})
+                </button>
+            </form>
+
+            <!-- Edit/Delete Buttons -->
+            {% if user == post.author %}
+                <a href="{% url 'post_edit' pk=post.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'post_delete' pk=post.pk %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Comments Section -->
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>Comments ({{ comments.count }})</h4>
+        {% for comment in comments %}
+            <div class="mb-3">
+                <strong>{{ comment.author }}</strong>
+                <small class="text-muted">{{ comment.created_at }}</small>
+                <p>{{ comment.body }}</p>
+
+                {% if user == comment.author %}
+                    <form action="{% url 'delete_comment' comment.pk %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+    <!-- Comment Form -->
+    {% if user.is_authenticated %}
+    <div class="card mt-3">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea name="comment" rows="3" class="form-control" placeholder="Add a comment..."></textarea>
+                </div>
+                <button type="submit" name="comment_submit" class="btn btn-success mt-2">Post Comment</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+        <p class="mt-4">You must <a href="{% url 'login' %}">log in</a> to comment.</p>
+    {% endif %}
+{% endblock %}

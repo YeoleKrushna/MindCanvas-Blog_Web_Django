@@ -1,0 +1,155 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #fff !important;
+    margin-right: 1rem;
+}
+
+.logout-btn {
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 0.4rem;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+/* Global */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fbfd;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    color: white;
+    padding: 4rem 1rem;
+    border-radius: 0 0 2rem 2rem;
+}
+
+/* Featured Post */
+.featured-post {
+    background: #ffffff;
+    padding: 2rem;
+    margin-top: -2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-card {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.post-title {
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.post-title:hover {
+    color: #007bff;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Grid */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Sidebar */
+.sidebar {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.widget {
+    margin-bottom: 2rem;
+}
+
+.widget ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.widget ul li {
+    margin-bottom: 0.5rem;
+}
+
+.widget ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.widget ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-in;
+}
+
+.animate-slide-in {
+    animation: slideInUp 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
